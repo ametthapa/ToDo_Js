@@ -12,19 +12,26 @@
     <div class="card">
     <h1>Todo App</h1>
         <div class="form-control">
+            <input type="hidden" id="save_index">
             <input type="text" name="new_todo" id="new_todo" placeholder="Add your new todo">
             <button id="add_task"><i class="fa fa-plus" aria-hidden="true"></i>
+            </button>
+            <button id="save_task" class="save_task"><i class="fas fa-save" aria-hidden="true"></i>
             </button>
         </div>
         <div class="list-todo">
             <ul id="list" class="list">
-                <!-- <li>Buy a new gaming laptop <button class="delete_btn">
+                <li>Buy a new gaming laptop 
+                    <button id="edit_btn" class="edit_btn">
+                        <i class="far fa-edit"></i>
+                    </button>
+                    <button class="delete_btn">
                         <i class="fas fa-trash"></i>
-                    </button></li> -->
+                    </button></li>
             </ul>
         </div>
         <div class="footer">
-            You have <span id="count">0</span> pending tasks
+            <p>You have <span id="count">0</span> pending tasks</p>
             <button id="clear_btn">Clear All</button>
         </div>
     </div>

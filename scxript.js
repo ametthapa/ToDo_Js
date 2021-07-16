@@ -5,6 +5,9 @@ var todoList = document.getElementById('list');
 // var liValues = document.querySelectorAll('li');
 
 var clearBtn = document.getElementById('clear_btn');
+var editBtn = document.getElementById('edit_btn')
+var saveBtn = document.getElementById('save_task')
+
 
 
 newTodo.onkeyup = () =>{
@@ -27,7 +30,9 @@ function showTasks(){
     }
     let newLiTag ='';
     listArr.forEach((element, index) => {
-        newLiTag += `<li>${element} <button class="delete_btn" onclick="deleteTask(${index})"><i class="fas fa-trash"></i></button></li>` 
+        newLiTag += `<li><span>${element}</span><button class="edit_btn"  onclick="editTask(${index})"><i class="far fa-edit"></i></button>
+           <button class="delete_btn" onclick="deleteTask(${index})"><i class="fas fa-trash"></i></button>
+        </li>` 
     })
 
     todoList.innerHTML = newLiTag;
@@ -47,30 +52,61 @@ function deleteTask(index){
     showTasks();
 }
 
+function editTask(index){
+    let getLocalStorage = localStorage.getItem("New Task");
+    listArr = JSON.parse(getLocalStorage);
+
+    let saveindex = document.getElementById('save_index');
+    saveindex.value = index;
+    newTodo.value = listArr[index];
+
+    addBtn.style.display='none';
+    saveBtn.style.display='block';
+
+
+
+
+    // const input = document.createElement('input');
+    // input.type ='text';
+    // input.value = theTask;
+    // console.log(theTask);
+}
+
 showTasks();
 
 //event listeners
 addBtn.addEventListener('click', () => {
     let userValue = newTodo.value;
-    let getLocalStorage = localStorage.getItem("New Task");
-    if(getLocalStorage == null){
-        listArr = [];
-    }else{
-        listArr = JSON.parse(getLocalStorage);
+    if (userValue.trim()!=0){
+        let getLocalStorage = localStorage.getItem("New Task");
+        if(getLocalStorage == null){
+            listArr = [];
+        }else{
+            listArr = JSON.parse(getLocalStorage);
+        }
+        listArr.push(userValue);
+        localStorage.setItem("New Task", JSON.stringify(listArr));
+        showTasks();
     }
-    listArr.push(userValue);
-    localStorage.setItem("New Task", JSON.stringify(listArr));
-    showTasks();
-})
+});
 
 clearBtn.addEventListener('click', ()=>{
     listArr =[];
     localStorage.setItem("New Task", JSON.stringify(listArr));
     showTasks();
+});
+
+saveBtn.addEventListener('click',()=>{
+    let getLocalStorage = localStorage.getItem("New Task");
+    listArr = JSON.parse(getLocalStorage);
+    let saveindex=document.getElementById('save_index').value;
+    listArr[saveindex]=newTodo.value;
+
+    addBtn.style.display='block';
+    saveBtn.style.display='none';
+    localStorage.setItem("New Task", JSON.stringify(listArr));
+    showTasks();
 })
-
-
-
 
 
 
