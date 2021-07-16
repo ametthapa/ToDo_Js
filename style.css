@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    /* font-family:'Roboto Condensed', sans-serif; */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333;
+}
+
+ul{
+    list-style-type: none;
+}
+
+h1{
+    font-weight: 900;
+    margin: 5px 0 10px 0;
+}
+
+button{
+    background-color: blueviolet;
+    color:#fff;
+    padding:7px 15px;
+    cursor: pointer;
+    border: 2px solid;
+    font-size: 20px;
+}
+
+.card{
+    background-color: #fff;
+    padding: 20px 10px;
+}
+.form-control{
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    position: relative;
+}
+
+.form-control input{
+    border:2px solid #f0f0f0;
+    border-radius: 4px;
+    padding:10px;
+    font-size: 14px;
+    width: 80%;
+}
+
+.form-control input:focus{
+    outline: 0;
+    border-color: #777;
+}
+
+.list{
+    padding: 0;
+    margin-bottom: 40px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.list li{
+    background-color: #eee;
+    margin-bottom: 7px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:10px;
+    position: relative;
+    overflow: hidden;
+}
+
+li .delete_btn{
+    position: absolute;
+    right: -50px;
+    cursor: pointer;
+    border: 1px solid red;
+    background-color: red;
+    transition: all 0.3s ease;
+    /* display: none; */
+} 
+
+li:hover .delete_btn{
+    right: 0;
+    display: block;
+}
+
+.footer{
+    margin-top:10px;
+    padding-top: 10px;
+}
+.footer button{
+    padding:10px;
+    margin-left: 30px;
+}
